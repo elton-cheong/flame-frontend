@@ -100,6 +100,7 @@
 <script>
 
 export default {
+
   data: () => ({ 
     drawer: null,
     login: false,
@@ -115,6 +116,7 @@ export default {
   }),
   computed: {
     currentUser() {
+
       return this.$store.state.auth.user;
     },
     showAdminBoard() {

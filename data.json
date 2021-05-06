@@ -1,0 +1,61 @@
+{
+    "campaigns": [
+        {
+        "campaignId": 1,
+        "brandId": 0,
+        "campaignTitle": "<ReferenceError: title is not defined>",
+        "campaignDesc": "Sit ipsum elit cillum adipisicing voluptate dolore in nulla consectetur. Incididunt elit laboris dolor esse consectetur eu pariatur dolor. Exercitation eu velit proident adipisicing Lorem ipsum mollit in quis.\r\n",
+        "campaignCreateDate": "2017-06-05T11:44:31 -08:00",
+        "campaignStatus": "Completed"
+        },
+        {
+        "campaignId": 2,
+        "brandId": 0,
+        "campaignTitle": "<ReferenceError: title is not defined>",
+        "campaignDesc": "Incididunt enim reprehenderit ipsum aute fugiat cupidatat sit consectetur magna fugiat nisi occaecat culpa. Proident Lorem Lorem ex deserunt ullamco exercitation proident voluptate nisi. Excepteur do aute labore ad cupidatat excepteur occaecat fugiat aute pariatur sint.\r\n",
+        "campaignCreateDate": "2016-06-18T04:03:46 -08:00",
+        "campaignStatus": "Completed"
+        },
+        {
+        "campaignId": 3,
+        "brandId": 0,
+        "campaignTitle": "<ReferenceError: title is not defined>",
+        "campaignDesc": "Excepteur voluptate mollit ullamco nisi tempor proident consequat ut veniam ullamco occaecat. Amet non est do magna aute. Qui cillum Lorem commodo laboris sit consequat minim minim ullamco. Aute enim consequat et labore exercitation ut est voluptate reprehenderit in do. Sunt ipsum id labore dolore.\r\n",
+        "campaignCreateDate": "2016-11-22T02:47:28 -08:00",
+        "campaignStatus": "Completed"
+        },
+        {
+        "campaignId": 4,
+        "brandId": 0,
+        "campaignTitle": "<ReferenceError: title is not defined>",
+        "campaignDesc": "Lorem dolore veniam sunt est veniam id cupidatat veniam eu mollit. Est sint excepteur tempor esse. Duis aliquip aliquip labore minim tempor laboris.\r\n",
+        "campaignCreateDate": "2015-06-06T07:00:57 -08:00",
+        "campaignStatus": "Completed"
+        },
+        {
+        "campaignId": 5,
+        "brandId": 0,
+        "campaignTitle": "<ReferenceError: title is not defined>",
+        "campaignDesc": "Elit velit non laborum amet eu quis ad proident anim amet laboris. Ex adipisicing occaecat occaecat nulla pariatur commodo sit nostrud dolore veniam veniam laborum pariatur. Nisi velit ea eiusmod enim nostrud proident. Laboris aute qui amet id culpa.\r\n",
+        "campaignCreateDate": "2014-02-22T06:17:22 -08:00",
+        "campaignStatus": "New"
+        },
+        {
+        "campaignId": 6,
+        "brandId": 0,
+        "campaignTitle": "<ReferenceError: title is not defined>",
+        "campaignDesc": "Ad aliqua dolore magna ea laboris excepteur. Excepteur qui anim non eiusmod nostrud sint ullamco pariatur esse deserunt. Laboris deserunt labore adipisicing anim. Mollit laboris elit eiusmod et et pariatur.\r\n",
+        "campaignCreateDate": "2015-01-22T12:29:06 -08:00",
+        "campaignStatus": "Ongoing"
+        },
+        {
+        "campaignId": 7,
+        "brandId": 0,
+        "campaignTitle": "<ReferenceError: title is not defined>",
+        "campaignDesc": "Aliqua adipisicing dolore occaecat reprehenderit ut irure minim dolor. Ipsum elit consequat ad magna ullamco id ut dolore mollit deserunt. Qui culpa excepteur Lorem occaecat duis esse esse dolor mollit aute cupidatat reprehenderit sit.\r\n",
+        "campaignCreateDate": "2014-06-19T05:53:49 -08:00",
+        "campaignStatus": "New"
+        }
+    ]   
+
+}
