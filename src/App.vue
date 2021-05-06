@@ -116,7 +116,6 @@ export default {
   }),
   computed: {
     currentUser() {
-
       return this.$store.state.auth.user;
     },
     showAdminBoard() {
@@ -126,6 +125,9 @@ export default {
 
       return false;
     }
+  },
+  mounted() {
+    this.$store.dispatch('loadCampaigns',this.$store.state.auth.user.id);
   },
   methods: {
     logOut() {

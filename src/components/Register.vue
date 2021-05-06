@@ -75,9 +75,17 @@
           </div>
           <div class="form-group">
             <label for="role">Account Type</label>
-            <select v-model="user.role">
+            <!-- <select v-model="user.role">
               <option v-for="role in roles" :key="role">{{ role }}</option>
-            </select>
+            </select> -->
+            <div class="form-check">
+              <input class="form-check-input" type="radio" v-model="user.role" value="Brand" />
+              <label class="form-check-label">Brand</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" v-model="user.role" value="Influencer" />
+              <label class="form-check-label">Influencer</label>
+            </div>
             <div
               v-if="submitted && errors.has('role')"
               class="alert-danger"

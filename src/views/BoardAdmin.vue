@@ -1,44 +1,51 @@
 /* eslint-disable no-console */
 <template>
-  <div class="container">
+  <div class="container-fluid">
+    <h3 class="header">
+      <strong>{{currentUser.username}}</strong> Campaign List
+    </h3>
     <v-container class="my-5">
-      <v-btn @click="getCampaigns(currentUser.id)">Get Campaign</v-btn>
-      <h3>
-        <strong>{{currentUser.username}}</strong> Profile
-      </h3>
-      <p>
-      <strong>Id:</strong>
-      {{currentUser.id}}
-      </p>
-      <p>URL: {{this.url}}</p>
-      <p>Campaign DTO: {{this.campaignDataList}}</p>
-      <div v-for="campaign in campaignDataList" :key="campaign.id" class="campaign-data">
-        <div>
-          <span>Id: {{campaign.campaignId}}</span>
-        </div>
-        <div>
-          <span>Title: {{campaign.campaignTitle}}</span>
-        </div>
-        <div>
-          <span>Description: {{campaign.campaignDesc}}</span>
-        </div>
-        <div>
-          <span>Date Created: {{campaign.campaignCreateDate}}</span>
-        </div>
-        <div>
-          <span>Status: {{campaign.campaignStatus}}</span>
-        </div>
-      </div>
-      <!-- <v-layout row v-if="isCampaignEmpty">
-        <ul>
-          <li>
-
-          </li>
-        </ul>
-      <v-spacer></v-spacer>
-      </v-layout> -->
+      <!-- <v-btn @click="getCampaigns(currentUser.id)">Get Campaign</v-btn> -->
 
       
+      <!-- <ul> -->
+        <!-- <li>
+          <p>Campaign: {{this.campaignDataList[0].campaignMainDto}}</p>
+          <p>Id: {{this.campaignDataList[0].campaignMainDto.campaignId}}</p>
+          <p>Title: {{this.campaignDataList[0].campaignMainDto.campaignTitle}}</p>
+          <p>Filter List of Main DTO: {{filterMainDto}}</p>
+          <p>Filter List of Details DTO: {{filterDetailDto}}</p>
+        </li> -->
+        <!-- <li v-for="c in filterMainDto" :key="c.campaignId">{{c}}</li>
+        
+      </ul> -->
+      <v-card flat v-for="c in filterMainDto" :key="c.campaignId" class="campaignList">
+        <v-layout row wrap class="campaignitem">
+          <v-flex xs12 md2>
+            <div class="caption grey--text">Campaign Title</div>
+            <div>{{ c.campaignTitle }}</div>
+          </v-flex>
+          <v-flex xs12 sm4 md4>
+            <div class="caption grey--text">Description</div>
+            <div>{{c.campaignDesc }}</div>
+          </v-flex>
+          <v-flex xs6 sm4 md2>
+            <div class="caption grey--text">Created On</div>
+            <div>{{c.campaignCreateDate }}</div>
+          </v-flex>
+          <v-flex xs2 sm4 md2>
+            <div>
+              <v-chip small :class="c.campaignStatus">{{convertToStatus(c.campaignStatus)}}</v-chip>
+            </div>
+          </v-flex>
+          <v-spacer></v-spacer>
+          <v-flex xs2 sm4 md2>
+            <router-link v-bind:to="'/Campaign/' + c.campaignId " 
+              class="btn btn-sm" v-on:click="selectCampaign(c)">Edit</router-link>
+          </v-flex>
+        </v-layout>
+        <v-divider></v-divider>
+      </v-card>
     </v-container>
 
   </div>
@@ -47,10 +54,7 @@
 <script>
 import axios from 'axios';
 
-//const baseUrl = 'http://18.138.248.19:8080/';
 const baseUrl = 'http://localhost:8081/';
-//import UserService from '../services/user.service';
-// import BrandService from '../services/brand.service'
 
 export default {
 
@@ -59,109 +63,70 @@ export default {
   components:{
 
   },
-  data: function() {
+  data: function (){
     return {
       content: 'Admin Content',
-      errored: false,
-      loading: false,
-      campaignDataList: null,
-      url: ''
-      // campaigns: [
-      //   { id: 1, title: "Adidas Shoes", description: "Advertisement for Shoes, Influencer has to create own instagram and FB", createDate: "5/5/2021", status: "New" },
-      //   { id: 2, title: "Nike Shoes", description: "Advertisement for Clothings, Influencer has to create own instagram and FB", createDate: "1/5/2021", status: "Ongoing"},
-      //   { id: 3, title: "Ascis Shoes", description: "Advertisement for Shoes, Influencer has to create own instagram and FB", createDate: "15/4/2021", status: "Completed"},
-      //   { id: 4, title: "XXX1 Clothing Apparels", description: "Advertisement for Shoes, Influencer has to create own instagram and FB", createDate: "5/5/2021", status: "New" },
-      //   { id: 5, title: "XXX2 Electrical Applicances", description: "Advertisement for Clothings, Influencer has to create own instagram and FB", createDate: "1/5/2021", status: "Ongoing"},
-      //   { id: 6, title: "XXX3 Shoes", description: "Advertisement for Shoes, Influencer has to create own instagram and FB", createDate: "15/4/2021", status: "Completed"},
-      //   { id: 7, title: "XXX4 Shoes", description: "Advertisement for Shoes, Influencer has to create own instagram and FB", createDate: "5/5/2021", status: "New" },
-      //   { id: 8, title: "XXX5 Shoes", description: "Advertisement for Clothings, Influencer has to create own instagram and FB", createDate: "1/5/2021", status: "Ongoing"},
-      //   { id: 9, title: "XXX6 Shoes", description: "Advertisement for Shoes, Influencer has to create own instagram and FB", createDate: "15/4/2021", status: "Completed"},
-      //   { id: 10, title: "XXX7 Shoes", description: "Advertisement for Shoes, Influencer has to create own instagram and FB", createDate: "5/5/2021", status: "New" },
-      //   { id: 11, title: "XXX8 Shoes", description: "Advertisement for Clothings, Influencer has to create own instagram and FB", createDate: "1/5/2021", status: "Ongoing"},
-      //   { id: 12, title: "XXX9 Shoes", description: "Advertisement for Shoes, Influencer has to create own instagram and FB", createDate: "15/4/2021", status: "Completed"},
-      // ]
+      url: '',
+      campaign: null
+      
     };
   },
   created() {
-
-
-    
-  },
-  mounted() {
-    // axios
-    //   .get('http://localhost:8081/api/v1/campaign/brand/' + this.currentUser.id)
-    //   .then(response => (this.campaigns = response.data))
-    // axios
-    //   .get('http://localhost:8081//api/v1/campaign/brand/' + this.currentUser.id)
-    //   .then(response => {
-    //     this.campaigns = response.data
-    //   })
-    //   .catch(error => {
-    //     // eslint-disable-next-line no-console
-    //     console.log(error)
-    //     this.errored = true
-    //   })
-    //   .finally(() => this.loading = false)
-    
-      // this.$http.get('http://localhost:8081//api/v1/campaign/brand/' + this.currentUser.id).then(function(data){
-          
-      //     this.campaigns = data;
-      // })
-
-    // UserService.getAdminBoard().then(
-    //   response => {
-    //     this.content = response.data;
-    //   },
-    //   error => {
-    //     this.content =
-    //       (error.response && error.response.data && error.response.data.message) ||
-    //       error.message ||
-    //       error.toString();
-        
-    //   }
-    // )
-    // let url = baseUrl + 'campaign/brand/1';
-    // axios.get(url).then(resp => {
-    // console.log(`HTTP Response: ${resp.status}, ${resp.statusText}`);
-    // console.log(`Response Data: ${resp.data.length} items`);
-    // });
-
-    // if (!this.currentUser) {
-    //   this.$router.push('/login');
-    // }
 
   },
   computed: {
     currentUser() {
       return this.$store.state.auth.user;
+    },
+    campaignDataList (){
+      return this.$store.state.campaigns;
+    },
+    filterMainDto(){
+      let mainDto = [];
+      for (let i=0; i<this.campaignDataList.length; i++){
+        mainDto.push(this.campaignDataList[i].campaignMainDto)
+      }
+      return mainDto;
+    },
+    filterDetailDto(){
+      let detailDto = [];
+      for (let i=0; i<this.campaignDataList.length; i++){
+        detailDto.push(this.campaignDataList[i].campaignDetailDto)
+      }
+      return detailDto;
     }
+
   },
   methods:{
-    processCampaigns(){
+    parseData(data) {
+      if (!data) return {};
+      if (typeof data === 'object') return data;
+      if (typeof data === 'string') return JSON.parse(data);
 
-    },
-    getCampaigns(id){
-      this.url = baseUrl + 'api/v1/campaign/brand/' + id;
-      axios.get(this.url).then(resp => {
-        console.log(`HTTP Response: ${resp.status}, ${resp.statusText}`);
-        console.log(`Response Data: ${resp.data.length} items`);
-        this.campaignDataList = resp.data;
-
-        // console.log(resp.data);
-        // console.log(resp.status);
-        // console.log(resp.statusText);
-        // console.log(resp.headers);
-        // console.log(resp.config);
-        
-      }).catch(error => {
-        console.log(error)
-        this.errored = true
-      })
+      return {};
     },
     isCampaignEmpty()
     {
-      return false;
-    }
+      return true;
+    },
+    convertToStatus(campaignStatus){
+      let status = '';
+      switch (campaignStatus)
+      {
+        case 1: status='New'; break;
+        case 2: status='Completed'; break;
+        case 3: status='Ongoing'; break;
+        default:
+          status='New';
+          
+      }
+      return status;
+    },
+    selectCampaign(campaign) {
+      this.$store.dispatch('editCampaign', campaign);
+      this.$router.push("/Campaign");
+    },
+
   }
 };
 </script>
@@ -192,8 +157,18 @@ export default {
   border-block-end: 0em;
   padding-inline: 2px;
 }
-
-.campaignlist{
-  margin-top: 2em;
+.header {
+  padding: 20px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+}
+.campaignList{
+  padding: 10px;
+  text-align: center;
+  background:white;
+  color: black;
+  font-size: 14px;
 }
 </style>
