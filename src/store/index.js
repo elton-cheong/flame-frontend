@@ -24,11 +24,13 @@ export default new Vuex.Store({
   actions:{
     async loadCampaigns({ commit }, id){
       let response = await userService.getCampaigns(id);
-      commit('SET_CAMPAIGNS', response.data);
+          commit('SET_CAMPAIGNS', response.data);
+          return Promise.resolve(response.data);
     },
     editCampaign({commit}, campaign){
       localStorage.setItem('selectedcampaign', campaign);
       commit('EDIT_CAMPAIGN', campaign);
+      return Promise.resolve(campaign);
     }
   },
   modules: {

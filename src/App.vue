@@ -44,7 +44,7 @@
       dark
       src="../src/assets/city.jpg"
       prominent
-    >
+    class="bar">
       <template v-slot:img="{ props }">  
         <v-img
           v-bind="props"
@@ -127,7 +127,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('loadCampaigns',this.$store.state.auth.user.id);
+
   },
   methods: {
     logOut() {
@@ -143,7 +143,11 @@ export default {
 };
 </script>
 
-<style scoped>
-
+<style>
+.bar{
+  position: relative;
+  overflow:unset;
+  text-overflow:ellipsis;
+}
 
 </style>>

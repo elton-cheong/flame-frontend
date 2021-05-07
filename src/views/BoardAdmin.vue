@@ -1,24 +1,11 @@
 /* eslint-disable no-console */
 <template>
-  <div class="container-fluid">
+  <div class="container">
     <h3 class="header">
       <strong>{{currentUser.username}}</strong> Campaign List
     </h3>
     <v-container class="my-5">
-      <!-- <v-btn @click="getCampaigns(currentUser.id)">Get Campaign</v-btn> -->
 
-      
-      <!-- <ul> -->
-        <!-- <li>
-          <p>Campaign: {{this.campaignDataList[0].campaignMainDto}}</p>
-          <p>Id: {{this.campaignDataList[0].campaignMainDto.campaignId}}</p>
-          <p>Title: {{this.campaignDataList[0].campaignMainDto.campaignTitle}}</p>
-          <p>Filter List of Main DTO: {{filterMainDto}}</p>
-          <p>Filter List of Details DTO: {{filterDetailDto}}</p>
-        </li> -->
-        <!-- <li v-for="c in filterMainDto" :key="c.campaignId">{{c}}</li>
-        
-      </ul> -->
       <v-card flat v-for="c in filterMainDto" :key="c.campaignId" class="campaignList">
         <v-layout row wrap class="campaignitem">
           <v-flex xs12 md2>
@@ -72,7 +59,7 @@ export default {
     };
   },
   created() {
-
+      this.$store.dispatch('loadCampaigns',this.$store.state.auth.user.id);
   },
   computed: {
     currentUser() {

@@ -2,36 +2,20 @@
   <div class="col-md-12">
     <div class="card card-container">
       <form name="form" @submit.prevent="handleLogin">
+        <!--- USERNAME FIELD---->
         <div class="form-group">
           <label for="username">Username</label>
-          <input
-            v-model="user.username"
-            v-validate="'required'"
-            type="text"
-            class="form-control"
-            name="username"
-          />
-          <div
-            v-if="errors.has('username')"
-            class="alert alert-danger"
-            role="alert"
-          >Username is required!</div>
+          <input v-model="user.username" v-validate="'required'" type="text" class="form-control" name="username"/>
+            <div v-if="errors.has('username')" class="alert alert-danger" role="alert">Username is required!</div>
         </div>
+        <!--- PASSWORD FIELD---->
         <div class="form-group">
           <label for="password">Password</label>
-          <input
-            v-model="user.password"
-            v-validate="'required'"
-            type="password"
-            class="form-control"
-            name="password"
-          />
-          <div
-            v-if="errors.has('password')"
-            class="alert alert-danger"
-            role="alert"
-          >Password is required!</div>
+          <input v-model="user.password" v-validate="'required'" type="password" class="form-control" name="password"/>
+          <div v-if="errors.has('password')" class="alert alert-danger" role="alert" >Password is required!</div>
         </div>
+        <v-spacer></v-spacer>
+        <!--- LOGIN ACTION---->
         <div class="form-group">
           <button class="btn btn-primary btn-block" :disabled="loading">
             <span v-show="loading" class="spinner-border spinner-border-sm"></span>
@@ -129,5 +113,19 @@ label {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
+}
+.btn{
+  position:relative;
+  margin-top: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  outline: none;
+  padding: 0.7rem 2rem;
+  border: none;
+
 }
 </style>
