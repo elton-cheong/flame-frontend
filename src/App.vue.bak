@@ -53,29 +53,31 @@
 
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-layout>
-      <v-app-bar-title class="mt-1 pl-2">Flame</v-app-bar-title>
+      <v-app-bar-title>Flame</v-app-bar-title>
 
       <div v-if="!currentUser" class="navbar-nav ml-auto">
-      <v-list class="nav-item" color="white">
+        <ul>
+        <li class="nav-item">
           <router-link to="/register" class="nav-link">
-            <font-awesome-icon icon="user-plus"/> Sign Up
+            <font-awesome-icon icon="user-plus" />Sign Up
           </router-link>
-        </v-list>
-        <v-list class="nav-item" >
+        </li>
+        <li class="nav-item">
           <router-link to="/login" class="nav-link">
             <font-awesome-icon icon="sign-in-alt" />Login
           </router-link>
-        </v-list>
+        </li>
+        </ul>
       </div>
       
       <div v-if="currentUser" class="navbar-nav ml-auto">
-        <a class="nav-item" important color="white">
-          <a class="nav-link"  href @click.prevent="logOut">
-            <font-awesome-icon icon="sign-out-alt"/>LogOut
-            
+        <ul>
+        <li class="nav-item">
+          <a class="nav-link" href @click.prevent="logOut">
+            <font-awesome-icon icon="sign-out-alt" />LogOut
           </a>
-        </a>
-        
+        </li>
+        </ul>
       </div>
 
       <!-- <v-btn icon @click.prevent="logOut">
@@ -100,7 +102,6 @@
 export default {
 
   data: () => ({ 
-    name:'',
     drawer: null,
     login: false,
     items: [
