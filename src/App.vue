@@ -36,57 +36,71 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-layout row wrap class="header">
+    <v-layout row wrap >
     <v-app-bar
       app
       color="primary"
       dense
       dark
       src="../src/assets/city.jpg"
-      prominent
+      height="80"
     class="bar">
       <template v-slot:img="{ props }">  
         <v-img
           v-bind="props"
         ></v-img>
       </template>
+<v-row align="center">
+  <v-col
 
+      sm="1"
+    >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+  </v-col>
       <v-layout>
-      <v-app-bar-title class="mt-1 pl-2">Flame</v-app-bar-title>
+          <v-col sm="8">
+          <v-app-bar-title>Flame</v-app-bar-title>
+          </v-col>
+          <v-col sm="1"></v-col>
+          </v-layout>
+          <v-layout>
+            <v-spacer></v-spacer>
+  <v-col
+      sm="4"
+    >
+      <div v-if="!currentUser">
 
-      <div v-if="!currentUser" class="navbar-nav ml-auto">
-      <v-list class="nav-item" color="white">
           <router-link to="/register" class="nav-link">
-            <font-awesome-icon icon="user-plus"/> Sign Up
+            <font-awesome-icon icon="user-plus" color="white"/><span class="white--text">Sign Up</span>
           </router-link>
-        </v-list>
-        <v-list class="nav-item" >
+
+ 
           <router-link to="/login" class="nav-link">
-            <font-awesome-icon icon="sign-in-alt" />Login
+            <font-awesome-icon icon="sign-in-alt" color="white"/><span class="white--text">Login</span>
           </router-link>
-        </v-list>
+
       </div>
       
-      <div v-if="currentUser" class="navbar-nav ml-auto">
-        <a class="nav-item" important color="white">
+      <div v-if="currentUser">
           <a class="nav-link"  href @click.prevent="logOut">
-            <font-awesome-icon icon="sign-out-alt"/>LogOut
-            
+            <font-awesome-icon icon="sign-out-alt" color="white"/><span class="white--text">LogOut</span>
           </a>
-        </a>
-        
-      </div>
+      </div> 
+  </v-col>
+
 
       <!-- <v-btn icon @click.prevent="logOut">
         <span>Sign Out</span>
         <v-icon>mdi-logout-variant</v-icon>
       </v-btn> -->
       </v-layout>
-    </v-app-bar>
-
-    </v-layout>
     
+
+    
+</v-row>
+</v-app-bar>
+</v-layout>
+
     <v-main>
       <router-view></router-view>
     </v-main>
@@ -108,7 +122,7 @@ export default {
       { title: 'Board Admin', icon: 'mdi-head-minus-outline', to:'/admin' },
       { title: 'Board Influencer', icon: 'mdi-account-group-outline', to:'/user' },
       { title: 'Profile', icon: 'mdi-account-details', to:'/profile' },
-      { title: 'Campaigns', icon: 'mdi-account-details', to:'/campaign' },
+      { title: 'Campaign', icon: 'mdi-account-details', to:'/campaign' },
       { title: 'Create Campaign', icon: 'mdi-briefcase-plus-outline', to:'/createcampaign' },
       { title: 'About Us', icon: 'mdi-information', to:'/about' },
     ]
