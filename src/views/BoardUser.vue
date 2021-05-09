@@ -7,18 +7,14 @@
       <v-container>
         <!-- <h2 class="text-center">Latest Campaign</h2> -->
         <v-row>
-          <v-col v-for="item in items" :key="item.id" cols="12" md="4">
+          <v-col v-for="campaign in filterMainDto" :key="campaign.campaignId" cols="12" md="4">
             <v-card outlined class="mx-auto">
-              <v-img
-                class="white--text align-end"
-                height="200px"
-                :src="item.src"
-              >
-                <v-card-title>{{ item.title }}</v-card-title>
+              <v-img class="white--text align-end" height="200px">
+                <v-card-title>{{ campaign.campaignTitle }}</v-card-title>
               </v-img>
-              <v-card-subtitle class="pb-0">{{ item.subtitle }}</v-card-subtitle>
+              <!-- <v-card-subtitle class="pb-0">{{ campaign.subtitle }}</v-card-subtitle> -->
               <v-card-text class="text--primary">
-                <div>{{ item.description }}</div>
+                <div>{{ campaign.campaignDesc }}</div>
               </v-card-text>
               <v-card-actions>
                 <v-btn color="primary" text>More</v-btn>
@@ -38,7 +34,7 @@ export default {
   name: 'User',
   data: () => ({
     show: false,
-    slides: [
+    images: [
       'https://picsum.photos/id/230/600/300',
       'https://picsum.photos/id/231/600/300',
       'https://picsum.photos/id/232/600/300',
@@ -70,7 +66,25 @@ export default {
   computed: {
     currentUser() {
       return this.$store.state.auth.user;
-    }
+    },
+    campaignDataList (){
+      return this.$store.state.campaigns;
+    },
+    filterMainDto(){
+      let mainDto = [];
+      for (let i=0; i<this.campaignDataList.length; i++){
+        mainDto.push(this.campaignDataList[i].campaignMainDto)
+      }
+      return mainDto;
+    },
+    filterDetailDto(){
+      let detailDto = [];
+      for (let i=0; i<this.campaignDataList.length; i++){
+        detailDto.push(this.campaignDataList[i].campaignDetailDto)
+      }
+      return detailDto;
+    },
+
   },
   mounted() {
     if (!this.currentUser) {

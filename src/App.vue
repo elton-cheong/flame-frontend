@@ -1,31 +1,18 @@
 <template>
   <v-app id="inspire">
     <v-container>
-    <v-navigation-drawer 
-    v-model="drawer"
-    app
-    >
-    
+    <v-navigation-drawer v-model="drawer" app>
       <v-list-item class="px-2">
         <v-list-item-avatar>
           <v-img src="../src/assets/FlameLogo.png"></v-img>
         </v-list-item-avatar>
-
         <v-list-item-title>Flame</v-list-item-title>
       </v-list-item>
 
       <v-divider></v-divider>
 
-      <v-list
-        dense
-        nav
-      >
-        <v-list-item
-          v-for="item in items"
-          :key="item.title"
-          :to="item.to"
-          link
-        >
+      <v-list dense nav>
+        <v-list-item v-for="item in items" :key="item.title" :to="item.to" link>
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -36,57 +23,31 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-layout row wrap class="header">
-    <v-app-bar
-      app
-      color="primary"
-      dense
-      dark
-      src="../src/assets/city.jpg"
-      prominent
-    class="bar">
+    <v-app-bar app color="primary" dense dark src="../src/assets/city.jpg" prominent class="bar">
       <template v-slot:img="{ props }">  
-        <v-img
-          v-bind="props"
-        ></v-img>
+        <v-img v-bind="props"></v-img>
       </template>
+      <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
 
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-layout>
       <v-app-bar-title class="mt-1 pl-2">Flame</v-app-bar-title>
-
-      <div v-if="!currentUser" class="navbar-nav ml-auto">
-      <v-list class="nav-item" color="white">
-          <router-link to="/register" class="nav-link">
-            <font-awesome-icon icon="user-plus"/> Sign Up
-          </router-link>
-        </v-list>
-        <v-list class="nav-item" >
-          <router-link to="/login" class="nav-link">
-            <font-awesome-icon icon="sign-in-alt" />Login
-          </router-link>
-        </v-list>
-      </div>
-      
-      <div v-if="currentUser" class="navbar-nav ml-auto">
-        <a class="nav-item" important color="white">
-          <a class="nav-link"  href @click.prevent="logOut">
-            <font-awesome-icon icon="sign-out-alt"/>LogOut
-            
-          </a>
+      <v-spacer></v-spacer>
+      <div v-if="!currentUser">
+        <a class="nav-item pr-2" color="white">
+          <router-link to="/register" class="nav-link" color="white"><font-awesome-icon icon="user-plus"/> Sign Up</router-link>
         </a>
-        
       </div>
-
-      <!-- <v-btn icon @click.prevent="logOut">
-        <span>Sign Out</span>
-        <v-icon>mdi-logout-variant</v-icon>
-      </v-btn> -->
-      </v-layout>
+      <div v-if="!currentUser">
+        <a class="nav-item pr-2" color="white">
+          <router-link to="/login" class="nav-link" color="white"><font-awesome-icon icon="sign-in-alt" />Login</router-link>
+        </a>
+      </div>
+      <div v-if="currentUser">
+        <a class="nav-item pr-2" foreground="white" color="white">
+          <a class="nav-link"  href @click.prevent="logOut" color="white"><font-awesome-icon icon="sign-out-alt"/>LogOut</a>
+        </a>
+      </div>
     </v-app-bar>
 
-    </v-layout>
-    
     <v-main>
       <router-view></router-view>
     </v-main>
@@ -104,7 +65,7 @@ export default {
     drawer: null,
     login: false,
     items: [
-      { title: 'Home', icon: 'mdi-home-circle-outline', to:'/' },
+      { title: 'Home', icon: 'mdi-home-circle-outline', to:'/', },
       { title: 'Board Admin', icon: 'mdi-head-minus-outline', to:'/admin' },
       { title: 'Board Influencer', icon: 'mdi-account-group-outline', to:'/user' },
       { title: 'Profile', icon: 'mdi-account-details', to:'/profile' },

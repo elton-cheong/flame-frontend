@@ -39,9 +39,6 @@
 </template>
 
 <script>
-import axios from 'axios';
-
-const baseUrl = 'http://localhost:8081/';
 
 export default {
 
@@ -52,10 +49,7 @@ export default {
   },
   data: function (){
     return {
-      content: 'Admin Content',
-      url: '',
-      campaign: null
-      
+
     };
   },
   created() {
@@ -81,8 +75,7 @@ export default {
         detailDto.push(this.campaignDataList[i].campaignDetailDto)
       }
       return detailDto;
-    }
-
+    },
   },
   methods:{
     parseData(data) {

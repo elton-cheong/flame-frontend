@@ -13,6 +13,9 @@ export default new Vuex.Store({
     selectedcampaign: null
 
   },
+  getters: {
+    allcampaigns: state => state.campaigns
+  },
   mutations:{
     SET_CAMPAIGNS(state, campaigns){
       state.campaigns = campaigns;
