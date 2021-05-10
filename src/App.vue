@@ -1,18 +1,31 @@
 <template>
   <v-app id="inspire">
     <v-container>
-    <v-navigation-drawer v-model="drawer" app>
+    <v-navigation-drawer 
+    v-model="drawer"
+    app
+    >
+    
       <v-list-item class="px-2">
         <v-list-item-avatar>
           <v-img src="../src/assets/FlameLogo.png"></v-img>
         </v-list-item-avatar>
+
         <v-list-item-title>Flame</v-list-item-title>
       </v-list-item>
 
       <v-divider></v-divider>
 
-      <v-list dense nav>
-        <v-list-item v-for="item in items" :key="item.title" :to="item.to" link>
+      <v-list
+        dense
+        nav
+      >
+        <v-list-item
+          v-for="item in items"
+          :key="item.title"
+          :to="item.to"
+          link
+        >
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -23,30 +36,70 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar app color="primary" dense dark src="../src/assets/city.jpg" prominent class="bar">
+    <v-layout row wrap >
+    <v-app-bar
+      app
+      color="primary"
+      dense
+      dark
+      src="../src/assets/city.jpg"
+      height="80"
+    class="bar">
       <template v-slot:img="{ props }">  
-        <v-img v-bind="props"></v-img>
+        <v-img
+          v-bind="props"
+        ></v-img>
       </template>
-      <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
+<v-row align="center">
+  <v-col
 
-      <v-app-bar-title class="mt-1 pl-2">Flame</v-app-bar-title>
-      <v-spacer></v-spacer>
+      sm="1"
+    >
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+  </v-col>
+      <v-layout>
+          <v-col sm="8">
+          <v-app-bar-title>Flame</v-app-bar-title>
+          </v-col>
+          <v-col sm="1"></v-col>
+          </v-layout>
+          <v-layout>
+            <v-spacer></v-spacer>
+  <v-col
+      sm="4"
+    >
       <div v-if="!currentUser">
-        <a class="nav-item pr-2" color="white">
-          <router-link to="/register" class="nav-link" color="white"><font-awesome-icon icon="user-plus"/> Sign Up</router-link>
-        </a>
+
+          <router-link to="/register" class="nav-link">
+            <font-awesome-icon icon="user-plus" color="white"/><span class="white--text">Sign Up</span>
+          </router-link>
+
+ 
+          <router-link to="/login" class="nav-link">
+            <font-awesome-icon icon="sign-in-alt" color="white"/><span class="white--text">Login</span>
+          </router-link>
+
       </div>
-      <div v-if="!currentUser">
-        <a class="nav-item pr-2" color="white">
-          <router-link to="/login" class="nav-link" color="white"><font-awesome-icon icon="sign-in-alt" />Login</router-link>
-        </a>
-      </div>
+      
       <div v-if="currentUser">
-        <a class="nav-item pr-2" foreground="white" color="white">
-          <a class="nav-link"  href @click.prevent="logOut" color="white"><font-awesome-icon icon="sign-out-alt"/>LogOut</a>
-        </a>
-      </div>
-    </v-app-bar>
+          <a class="nav-link"  href @click.prevent="logOut">
+            <font-awesome-icon icon="sign-out-alt" color="white"/><span class="white--text">LogOut</span>
+          </a>
+      </div> 
+  </v-col>
+
+
+      <!-- <v-btn icon @click.prevent="logOut">
+        <span>Sign Out</span>
+        <v-icon>mdi-logout-variant</v-icon>
+      </v-btn> -->
+      </v-layout>
+    
+
+    
+</v-row>
+</v-app-bar>
+</v-layout>
 
     <v-main>
       <router-view></router-view>
@@ -65,11 +118,11 @@ export default {
     drawer: null,
     login: false,
     items: [
-      { title: 'Home', icon: 'mdi-home-circle-outline', to:'/', },
+      { title: 'Home', icon: 'mdi-home-circle-outline', to:'/' },
       { title: 'Board Admin', icon: 'mdi-head-minus-outline', to:'/admin' },
       { title: 'Board Influencer', icon: 'mdi-account-group-outline', to:'/user' },
       { title: 'Profile', icon: 'mdi-account-details', to:'/profile' },
-      { title: 'Campaigns', icon: 'mdi-account-details', to:'/campaign' },
+      { title: 'Campaign', icon: 'mdi-account-details', to:'/campaign' },
       { title: 'Create Campaign', icon: 'mdi-briefcase-plus-outline', to:'/createcampaign' },
       { title: 'About Us', icon: 'mdi-information', to:'/about' },
     ]

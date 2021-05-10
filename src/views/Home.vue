@@ -10,9 +10,7 @@
               max-width="100%"
               max-height="100%"
               class="grey darken-4"
-            ><p class="pl-14 mt-14 text-left font-weight-bold" style="font-size:24pt ">
-                      {{ items[0].text }}
-                    </p></v-img>
+            ></v-img>
     </v-carousel-item>
     <v-carousel-item
       reverse-transition="fade-transition"
@@ -23,7 +21,7 @@
               max-width="100%"
               max-height="100%"
               class="grey darken-4"
-            ><p></p><p class="pl-14 mt-14 text-left font-weight-bold" style="font-size:24pt ">
+            ><p class="pl-14 mt-14 text-left font-weight-bold" >.</p><p class="pl-14 mt-14 text-left font-weight-bold" style="font-size:24pt ">
                       {{ items[1].text }}
                     </p></v-img>
     </v-carousel-item>
@@ -36,7 +34,7 @@
               max-width="100%"
               max-height="100%"
               class="grey darken-4"
-            ><p></p><p class="pl-14 mt-14 text-left font-weight-bold" style="font-size:24pt ">
+            ><p class="pl-14 mt-14 text-left font-weight-bold" >.</p><p class="pl-14 mt-14 text-left font-weight-bold" style="font-size:24pt ">
                       {{ items[2].text }}
                     </p></v-img>
     </v-carousel-item>

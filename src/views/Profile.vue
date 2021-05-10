@@ -85,7 +85,7 @@
       </v-row>
 
       <div class="my-4 subtitle-1">
-        $ • Sports, Shoes
+        $ â€¢ Sports, Shoes
       </div>
 
       <div>Trendy MX2 design in collaboration with Kanye West.</div>
