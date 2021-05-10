@@ -30,16 +30,3 @@ jobs:
         run: |
           npm install
           npm run build
-          
-      # Syncs your 'dist' folder from building the Vue app with an S3 bucket
-      - name: S3 Sync
-      # You may pin to the exact commit or the version.
-        uses: elton-cheong/flame-frontend@main
-        with:
-          args: --acl public-read --delete
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEYS_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: 'ap-southeast-1'
-          SOURCE_DIR: 'dist'
