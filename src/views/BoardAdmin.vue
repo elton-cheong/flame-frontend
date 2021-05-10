@@ -39,23 +39,12 @@
 </template>
 
 <script>
-import axios from 'axios';
-
-const baseUrl = 'http://localhost:8081/';
-
 export default {
-
-
   name: 'Admin',
   components:{
-
   },
   data: function (){
     return {
-      content: 'Admin Content',
-      url: '',
-      campaign: null
-      
     };
   },
   created() {
@@ -81,15 +70,13 @@ export default {
         detailDto.push(this.campaignDataList[i].campaignDetailDto)
       }
       return detailDto;
-    }
-
+    },
   },
   methods:{
     parseData(data) {
       if (!data) return {};
       if (typeof data === 'object') return data;
       if (typeof data === 'string') return JSON.parse(data);
-
       return {};
     },
     isCampaignEmpty()
@@ -113,7 +100,6 @@ export default {
       this.$store.dispatch('editCampaign', campaign);
       this.$router.push("/Campaign");
     },
-
   }
 };
 </script>
@@ -135,10 +121,8 @@ export default {
   background: orange;
 }
 .v-chip.Ongoing{
-
   background: tomato;
 }
-
 .pa-3{
   border-block-start:0em;
   border-block-end: 0em;
