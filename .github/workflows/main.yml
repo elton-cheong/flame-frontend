@@ -34,7 +34,7 @@ jobs:
       # Syncs your 'dist' folder from building the Vue app with an S3 bucket
       - name: S3 Sync
       # You may pin to the exact commit or the version.
-        uses: flameuser/s3-sync-action@v0.5.1
+        uses: flameuser/flame-frontend@v0.5.1
         with:
           args: --acl public-read --delete
         env:
