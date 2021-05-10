@@ -30,3 +30,24 @@ jobs:
         run: |
           npm install
           npm run build
+      
+      - name: S3 Deploy
+      # uses: Reggionick/s3-deploy@aa30e453a8a4170856aac178f018c506a80501cf
+        uses: Reggionick/s3-deploy@v3.1.1
+          with:
+          # Directory to deploy
+          folder: 'dist'
+          # Name of AWS Bucket
+          bucket: flame-frontend-app
+          # The destination bucket region
+          bucket-region: ap-southeast-1
+          # AWS CloudFront distribution ID
+          dist-id: E38JBQPDJ9EJDU
+          # AWS CloudFront invalidation path(s)
+          invalidation: # optional
+          # Removes files in S3 that are not available in the local copy of the directory
+          delete-removed: # optional
+          # Use this parameter to specify Cache-Control: no-cache, no-store, must-revalidate header
+          no-cache: # optional
+          # Upload files with private ACL, needed for S3 static website hosting
+          private: # optional
