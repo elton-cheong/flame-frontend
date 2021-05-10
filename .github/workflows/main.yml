@@ -34,7 +34,7 @@ jobs:
       # Syncs your 'dist' folder from building the Vue app with an S3 bucket
       - name: S3 Sync
       # You may pin to the exact commit or the version.
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --delete
         env:
@@ -46,7 +46,7 @@ jobs:
 
       # Clears the CloudFront cache so new requests will receive the latest version of your app
       - name: Invalidate CloudFront
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: chetan/invalidate-cloudFront-action@master
         env:
           DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
           PATHS: '/*'
