@@ -33,6 +33,7 @@ jobs:
         run: |
           npm install
           npm run build
+          npm audit fix
       
       - name: S3 Deploy
       # uses: Reggionick/s3-deploy@aa30e453a8a4170856aac178f018c506a80501cf
