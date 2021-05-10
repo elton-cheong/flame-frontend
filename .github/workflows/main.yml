@@ -41,7 +41,7 @@ jobs:
           # Directory to deploy
           folder: 'dist'
           # Name of AWS Bucket
-          bucket: flame-frontend-app
+          bucket: flame-frontend
           # The destination bucket region
           bucket-region: ap-southeast-1
           # AWS CloudFront distribution ID
