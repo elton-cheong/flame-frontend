@@ -47,9 +47,9 @@ jobs:
           # The destination bucket region
           bucket-region: ap-southeast-1
           # AWS CloudFront distribution ID
-          dist-id: E3SUUVKBL9PVLK
+          dist-id: E2IWWADMXRS2CR
           # AWS CloudFront invalidation path(s)
           invalidation: /
           delete-removed: true
           no-cache: true
-          private: true
+          private: false
