@@ -5,7 +5,7 @@ module.exports = {
 
   devServer: {
     //port: 8081,
-    proxy: '80http://18.138.248.19:80/'
+    proxy: 'http://18.138.248.19:8080/'
   },
 
   //For set or update devtool to debug
