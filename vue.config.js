@@ -5,7 +5,7 @@ module.exports = {
 
   devServer: {
     //port: 8081,
-    proxy: 'http://18.138.248.19:8080/'
+    proxy: '80http://18.138.248.19:80/'
   },
 
   //For set or update devtool to debug
@@ -16,27 +16,4 @@ module.exports = {
   transpileDependencies: [
     'vuetify'
   ],
-
-  pluginOptions: {
-    s3Deploy: {
-      registry: undefined,
-      awsProfile: 'default',
-      overrideEndpoint: true,
-      endpoint: 'http://flame-frontend.s3-website-ap-southeast-1.amazonaws.com/',
-      region: 'ap-southeast-1',
-      bucket: 'flame-frontend',
-      createBucket: true,
-      staticHosting: true,
-      staticIndexPage: 'index.html',
-      staticErrorPage: 'index.html',
-      assetPath: 'dist',
-      assetMatch: '**',
-      deployPath: '/',
-      acl: 'public-read',
-      pwa: false,
-      enableCloudfront: false,
-      pluginVersion: '4.0.0-rc3',
-      uploadConcurrency: 5
-    }
-  }
 }
